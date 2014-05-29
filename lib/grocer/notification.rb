@@ -93,7 +93,10 @@ module Grocer
       aps_hash[:sound] = sound if sound
       aps_hash[:'content-available'] = content_available if content_available?
 
-      { aps: aps_hash }.merge(custom || { })
+      payload = {}.merge(custom || {})
+      payload[:aps] ||= {}
+      payload[:aps].merge!(aps_hash)
+      payload
     end
 
     def payload_too_large?
