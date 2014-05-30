@@ -22,7 +22,7 @@ module Grocer
   InvalidCommandError = Class.new(Error)
 
   def self.env
-    ENV['RAILS_ENV'] || ENV['RACK_ENV'] || 'development'
+    ENV['APNS_ENV'] || ENV['RAILS_ENV'] || ENV['RACK_ENV'] || 'development'
   end
 
   def self.feedback(options)
